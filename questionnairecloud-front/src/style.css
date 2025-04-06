@@ -1,0 +1,29 @@
+@import "@vue-flow/core/dist/style.css";
+@import "@vue-flow/core/dist/theme-default.css";
+@import '@vue-flow/controls/dist/style.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+button {
+  border-radius: 8px !important;
+}
+
+.small-btn {
+  width: 32px;
+  padding: 0 !important;
+  font-size: 20px !important;
+}
+
+li {
+  list-style: none;
+}
