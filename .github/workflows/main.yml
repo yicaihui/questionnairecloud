@@ -42,11 +42,11 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
             [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-            if ! nvm list | grep -q 'v12.19.0'; then
-            echo "Node.js v12.19.0 not found, installing..."
-            nvm install 12.19.0
+            if ! nvm list | grep -q 'v14.21.3'; then
+            echo "Node.js v14.21.3 not found, installing..."
+            nvm install 14.21.3
             fi
-            nvm use 12.19.0 # 切换到指定版本
+            nvm use 14.21.3 # 切换到指定版本
 
             if ! command -v pm2 &> /dev/null; then
             echo "pm2 not found, installing..."
