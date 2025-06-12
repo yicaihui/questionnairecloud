@@ -38,6 +38,21 @@ jobs:
           username: ${{ secrets.MY_USER }} # 服务器用户名
           password: ${{ secrets.MY_PASS }} # 服务器密码
           script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+            if ! nvm list | grep -q 'v12.19.0'; then
+            echo "Node.js v12.19.0 not found, installing..."
+            nvm install 12.19.0
+            fi
+            nvm use 12.19.0 # 切换到指定版本
+
+            if ! command -v pm2 &> /dev/null; then
+            echo "pm2 not found, installing..."
+            npm install -g pm2
+            fi
+      
             cd /home/nginx/myBlogServer # 进入服务器中的端工程所在的目录
             export NODE_HOME=/root/.nvm/versions/node/v12.19.0  # 可使用`whereis node`查询node所在的目录
             export PATH=$PATH:$NODE_HOME/bin # 重新定义node的环境变量（必需，这样才能在后续工作流程中运行 npm install 等指令，否则会报错）
